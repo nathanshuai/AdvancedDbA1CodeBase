@@ -4,7 +4,7 @@ namespace WebApplication2.Models
 {
     public class Laptop
     {
-        public Guid Number { get; set; }
+        public Guid LaptopId { get; set; }
 
         private string _model;
         
@@ -17,6 +17,7 @@ namespace WebApplication2.Models
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Laptop model name must be at least three characters in length.");
                 }
+                _model = value;
             }
         }
 
@@ -36,9 +37,11 @@ namespace WebApplication2.Models
         
         public LaptopCondition Condition { get; set; }
         
-        public int BrandId { get; set; }
+        public Guid BrandId { get; set; }
         
         public Brand Brand { get; set; }
+
+        public HashSet<StoreLaptop> StoreLaptops { get; set; } = new HashSet<StoreLaptop>();
     }
 
     public enum LaptopCondition
